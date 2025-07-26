@@ -1,5 +1,5 @@
 from Mysql_demo import *
-
+from loguru import logger
 # 示例：用户表操作类（继承基类）
 class UserDAO(MySQLCRUD):
     """用户表数据访问对象"""
@@ -20,9 +20,9 @@ def Che_insert_main(a):
     try:
         user_dao.create(a)
     except pymysql.Error as e:
-        print(f"Database error occurred: {e}")
+        logger.error(f"Database error occurred: {e}")
     except Exception as e:
-        print(f"General error: {e}")
+        logger.error(f"General error: {e}")
     finally:
         # 确保关闭连接
         user_dao.close()

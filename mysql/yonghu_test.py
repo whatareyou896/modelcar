@@ -1,5 +1,5 @@
 from Mysql_demo import *
-
+from loguru import logger
 # 示例：用户表操作类（继承基类）
 class UserDAO(MySQLCRUD):
     """用户表数据访问对象"""
@@ -60,7 +60,7 @@ if __name__ == '__main__':
         update_data = {'email': 'john.doe@.com'}
         user_dao.update(update_data, {'id': 12})
         updated_user = user_dao.get_by_id(user_id)
-        print(f"Updated user: {updated_user}")
+        logger.info(f"Updated user: {updated_user}")
         '''
         user_id = user_dao.create(new_user)
         print(f"Created user with ID: {user_id}")
@@ -85,9 +85,9 @@ if __name__ == '__main__':
         print(f"User after deletion: {deleted_user}")
     '''
     except pymysql.Error as e:
-        print(f"Database error occurred: {e}")
+        logger.error(f"Database error occurred: {e}")
     except Exception as e:
-        print(f"General error: {e}")
+        logger.error(f"General error: {e}")
     finally:
         # 确保关闭连接
         user_dao.close()

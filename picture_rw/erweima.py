@@ -5,7 +5,7 @@ import cv2
 import requests
 import os
 import time
-
+from loguru import logger
 
 class QRCodeProcessor:
     """
@@ -33,7 +33,7 @@ class QRCodeProcessor:
         """记录日志"""
         timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
         log_entry = f"[{timestamp}] {message}\n"
-        print(log_entry, end="")
+        logger.info(log_entry, end="")
         with open(self.log_file, "a") as f:
             f.write(log_entry)
 
@@ -167,10 +167,10 @@ def return_result():
     processor = QRCodeProcessor(open_browser=True)
 
     # 使用场景选择
-    print("请选择二维码处理方式:")
-    print("1. 从图像文件处理")
-    print("2. 从摄像头扫描")
-    print("3. 从网络图片处理")
+    logger.info("请选择二维码处理方式:")
+    logger.info("1. 从图像文件处理")
+    logger.info("2. 从摄像头扫描")
+    logger.info("3. 从网络图片处理")
 
     choice = input("请输入选项 (1/2/3): ")
 
@@ -186,19 +186,19 @@ def return_result():
         image_url = input("请输入图片URL: ").strip()
         result = processor.process_qr_from_url(image_url)
     else:
-        print("无效选项")
+        logger.error("无效选项")
         result = None
 
     # 输出结果
     if result:
-        print(f"\n成功处理二维码: {result}")
+        logger.info(f"\n成功处理二维码: {result}")
     else:
-        print("\n未能处理二维码")
+        logger.error("\n未能处理二维码")
 
     # 显示日志文件路径
-    print(f"\n详细日志已保存至: {os.path.abspath(processor.log_file)}")
-    print(result)
-    print(type(result))
+    logger.info(f"\n详细日志已保存至: {os.path.abspath(processor.log_file)}")
+    logger.info(result)
+    logger.info(type(result))
     return result
 
 # 使用示例
@@ -206,10 +206,10 @@ if __name__ == "__main__":
     # 创建二维码处理器
     processor = QRCodeProcessor(open_browser=True)
     # 使用场景选择
-    print("请选择二维码处理方式:")
-    print("1. 从图像文件处理")
-    print("2. 从摄像头扫描")
-    print("3. 从网络图片处理")
+    logger.info("请选择二维码处理方式:")
+    logger.info("1. 从图像文件处理")
+    logger.info("2. 从摄像头扫描")
+    logger.info("3. 从网络图片处理")
 
     choice = input("请输入选项 (1/2/3): ")
 
@@ -225,15 +225,15 @@ if __name__ == "__main__":
         image_url = input("请输入图片URL: ").strip()
         result = processor.process_qr_from_url(image_url)
     else:
-        print("无效选项")
+        logger.error("无效选项")
         result = None
 
     # 输出结果
     if result:
-        print(f"\n成功处理二维码: {result}")
+        logger.info(f"\n成功处理二维码: {result}")
     else:
-        print("\n未能处理二维码")
-    print(result)
-    print(type(result))
+        logger.error("\n未能处理二维码")
+    logger.info(result)
+    logger.info(type(result))
     # 显示日志文件路径
-    print(f"\n详细日志已保存至: {os.path.abspath(processor.log_file)}")
+    logger.info(f"\n详细日志已保存至: {os.path.abspath(processor.log_file)}")

@@ -2,9 +2,18 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 import erweima
 import ShuJuTiQu
-from  Che_insert import *
+from  ..mysql.Che_insert  import *
+from loguru import logger
 import time
 def main(url):
+    """
+    获取 二维码的连接
+    获取对应html
+    解析html 得出数据字典进行数据 插入
+    Main function
+    :param url:
+    :return:
+    """
     # 初始化验证码处理器
     # 配置浏览器选项
     options = webdriver.ChromeOptions()
@@ -16,7 +25,7 @@ def main(url):
     wd = webdriver.Chrome(options=options)
     wd.get(url)
     try:
-        print("自动尝试失败，转为手动模式")
+        logger.info("自动尝试失败，转为手动模式")
         # 等待结果
         WebDriverWait(wd, 30).until(
             lambda
@@ -25,18 +34,18 @@ def main(url):
         )
 
         time.sleep(5)
-        print("手动输入验证码提交成功！")
+        logger.info("手动输入验证码提交成功！")
     # 获取页面内容
         page_content = wd.page_source
         with open('result.html', 'w', encoding='utf-8') as f:
             f.write(page_content)
-        print("页面内容已保存到 result.html")
+        logger.info("页面内容已保存到 result.html")
 
     except Exception as e:
-        print(f"程序执行出错: {str(e)}")
+        logger.error(f"程序执行出错: {str(e)}")
         # 保存错误截图
         wd.save_screenshot('error.png')
-        print("错误截图已保存到 error.png")
+        logger.info("错误截图已保存到 error.png")
     finally:
         time.sleep(5)
         wd.quit()
@@ -47,6 +56,6 @@ if __name__ == "__main__":
     main(url)
     #解析html 得出数据字典
     a = ShuJuTiQu.ShuJutiTiQu_main()
-    print("转化的字典数据为:",a)
+    logger.info(f"转化的字典数据为:{a}")
     #进行数据 插入
     Che_insert_main(a)
