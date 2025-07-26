@@ -2,6 +2,7 @@ import json
 from loguru import logger
 import re
 import api_doc_demo
+'''
 def FaPiao_ocr_main(url_json):
     """
     将 ocr 识别的 json 文件进行 收集所需内容输出
@@ -66,6 +67,7 @@ def FaPiao_ocr_main(url_json):
             result["remark_code"] = item['text']
     logger.info(result)
     return result
+    '''
 def remark_code(url_json,name):
     with open(
             #r'd:\software\python\envs\py38\script\download\[OCR]_dzfp_25442000000412019647_李春莲_20250709105155.jsonl',
