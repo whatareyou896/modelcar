@@ -5,6 +5,7 @@ import ShuJuTiQu
 from  ..mysql.Che_insert  import *
 from loguru import logger
 import time
+import Yan_Download
 def main(url):
     """
     获取 二维码的连接
@@ -50,6 +51,9 @@ def main(url):
         time.sleep(5)
         wd.quit()
 if __name__ == "__main__":
+    """
+    二维码录取主程序运行处
+    """
     #获取 二维码的连接
     url = erweima.return_result()
     # 获取对应html

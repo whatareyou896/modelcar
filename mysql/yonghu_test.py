@@ -4,6 +4,7 @@ from loguru import logger
 class UserDAO(MySQLCRUD):
     """用户表数据访问对象"""
 
+
     def __init__(self, host: str, user: str, password: str, database: str ,table_name: str):
         super().__init__(host, user, password, database, table_name)
 

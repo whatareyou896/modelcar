@@ -21,7 +21,7 @@ def api_doc_demo_main(file_path):
     logger.info("== URL:", url)
     
     # File to be recognized
-    file_path = r"C:\Users\AUSU\Downloads\dzfp_25442000000412019647_李春莲_20250709105155.pdf"
+    #file_path = r"C:\Users\AUSU\Downloads\dzfp_25442000000412019647_李春莲_20250709105155.pdf"
     # Task parameters
     options_json = json.dumps(
         {
@@ -170,5 +170,3 @@ def api_doc_demo_main(file_path):
     
     logger.info("======================\nProcess completed.")
     return download_path,name
-file_path = r'C:\Users\AUSU\Downloads\dzfp_25442000000412019647_李春莲_20250709105155.pdf'
-api_doc_demo_main(file_path)

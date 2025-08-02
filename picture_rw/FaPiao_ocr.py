@@ -69,6 +69,12 @@ def FaPiao_ocr_main(url_json):
     return result
     '''
 def remark_code(url_json,name):
+    """
+    这里 获取第三方 API 进行识别并返回两个参数
+    :param url_json:
+    :param name:
+    :return:
+    """
     with open(
             #r'd:\software\python\envs\py38\script\download\[OCR]_dzfp_25442000000412019647_李春莲_20250709105155.jsonl',
             url_json,
@@ -86,6 +92,3 @@ def remark_code(url_json,name):
                "发票号码":name_split[2]}
     logger.info(bianhao)
     return bianhao
-url_josn,name = api_doc_demo.api_doc_demo_main(0)
-
-remark_code(url_josn,name)

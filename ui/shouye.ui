@@ -16,8 +16,8 @@
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>330</y>
+     <x>360</x>
+     <y>240</y>
      <width>131</width>
      <height>61</height>
     </rect>
@@ -29,8 +29,8 @@
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>240</y>
+     <x>380</x>
+     <y>130</y>
      <width>121</width>
      <height>51</height>
     </rect>
@@ -42,10 +42,10 @@
   <widget class="QPushButton" name="pushButton_3">
    <property name="geometry">
     <rect>
-     <x>410</x>
+     <x>120</x>
      <y>120</y>
-     <width>121</width>
-     <height>61</height>
+     <width>131</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="text">
@@ -56,6 +56,19 @@
      <width>50</width>
      <height>50</height>
     </size>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_4">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>250</y>
+     <width>131</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>财务计算</string>
    </property>
   </widget>
  </widget>
